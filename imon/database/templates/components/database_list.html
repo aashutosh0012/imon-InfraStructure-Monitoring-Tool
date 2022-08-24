@@ -1,0 +1,44 @@
+<div id ='database-list-table'> </div>
+<table class="table table-striped table-hover table-bordered table-sm table-light caption-top table-responsive">
+
+  {% if request.GET.search %}
+    <caption>Search results for <b><i>"{{ request.GET.search }}"</b></i></caption>
+  {% else %}
+    <caption>All Database list</caption>
+  {% endif %}
+
+  <tr class="table-primary">
+    {% for field in database_fields %}
+      <th scope="col">{{field | title}}</th>
+    {% endfor %}
+  </tr>  
+
+  {% for database in database_list %}   
+    <tr>
+      {% for key,value in database.fields.items %}
+        {% if key != 'slug' %}
+            {% if value %}
+              {% if key == 'database_name' %}            
+                <td><a class="link-primary " role="button" href="{% url 'database-detail' database.fields.slug %}">
+                {{ value }}</a></td>  
+              {% elif key == 'hostname' %}      
+       			<td><a class="link-primary " role="button" hx-get="{% url 'server-detail' database.fields.hostname %}" hx-target="#database-list-table" hx-trigger="click">
+                {{ value }}</a></td> 
+              {% elif key == 'status' %}
+	              {% if value == 'UP' %}
+			          <td class="text-success"> {{value}} </td>	        
+		          {% elif value == 'Down' %}
+		              <td class="text-danger">{{value}}</td>	 
+	              {% endif %}
+              {% else %}
+                <td>{{ value }}</td>   
+              {% endif %}         
+            {% else %}
+              <td>-</td>
+            {% endif %}
+        {% endif %}
+      {% endfor %}            
+    </tr>   
+  {% endfor %}
+
+</table>

@@ -1,0 +1,74 @@
+{% load crispy_forms_tags %}
+
+
+ <hr>
+
+  <table class="table table-striped table-hover table-bordered table-sm table-light caption-top table-responsive">
+      <tr>
+      	<th>Updated</th>
+      	<th>Status</th> 
+        <th>CPU</th> 
+        <th>CPU Usage</th>
+        <th>Total Memory</th>
+        <th>Used Memory</th>
+        <th>Free Memory</th>        
+        <th>Swap Total</th>
+        <th>Swap Used</th>
+        <th>Swap Free</th>
+        <th>Uptime</th>
+        <th>load_average1</th>
+        <th>load_average2</th>
+        <th>load_average3</th>
+        <th></th>     
+      </tr>
+      <tr>
+      	<td>{{ serverMetrics.updated }}</td>
+      	<td>{{ serverMetrics.status }}</td>
+      	<td>{{ serverMetrics.cpu_cores }}</td>
+      	<td>{{ serverMetrics.cpu_usage }} <span>&#37;</span></td>      	
+      	<td>{{ serverMetrics.total_memory }}</td>
+      	<td>{{ serverMetrics.used_memory }}</td>
+      	<td>{{ serverMetrics.free_memory }}</td>      	
+      	<td>{{ serverMetrics.swap_total }}</td>
+      	<td>{{ serverMetrics.swap_used }}</td>
+      	<td>{{ serverMetrics.swap_free }}</td>      	
+      	<td>{{ serverMetrics.uptime }}</td>
+      	<td>{{ serverMetrics.load_average1 }}</td>
+      	<td>{{ serverMetrics.load_average2 }}</td>
+      	<td>{{ serverMetrics.load_average3 }}</td>
+
+
+      </tr>
+   </table>
+   
+
+  <div class="container row">
+  	<div class="col">
+  	{{ diskUsageChart | safe }}
+  	</div>
+  	<div class="d-flex col align-items-center">
+	<table class="table table-striped table-hover table-bordered table-sm table-light caption-top table-responsive">
+	   	<caption>Disk Volumes</caption> 
+	    <tr>
+	        <th>Name</th> 
+	        <th>Total Space</th>
+	        <th>Used Space</th>
+	        <th>Free Space</th>    
+	      </tr>
+      	{% for row in DiskVolumes %}
+      	<tr>
+	      	<td>{{ row.name }}</td>
+	      	<td>{{ row.total_size }}</td>
+	      	<td>{{ row.used_space }}</td>
+	      	<td>{{ row.free_space }}</td>
+	    </tr>
+      	{% endfor %}
+  	</table>
+  	</div>
+  </div>
+
+<div class="container">
+{{ cpu_usage_fig | safe }}
+{{ cpu_memory_usage_fig | safe }}
+
+</div>  

@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+
+<form  class="form-group" hx-post="{% url 'database-add' %}"  hx-swap="innerHTML" hx-target="#database-addbutton-list" > {% csrf_token %}
+	<table>
+		<tr class="form-group row">
+			{% for field in form %}
+				<td class="form-control col"> {{ field | as_crispy_field }} </td>
+			{% endfor %}
+		</tr>
+	</table>
+	<div class="flex-column m-2">
+		<input class="btn btn-outline-primary btn-sm" type="submit" name="submit">
+		<button class="btn btn-outline-secondary btn-sm" hx-get="{% url 'database-cancel' %}" hx-trigger="click" hx-target="#database-add-button">Cancel</button>
+	</div>
+</form>
+
+
+
+<!-- hx-target="#database-home" -->
