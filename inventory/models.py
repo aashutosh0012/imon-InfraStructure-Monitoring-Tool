@@ -28,7 +28,8 @@ class Server(models.Model):
 		indexes = [
 			models.Index(fields=['server_name','hostname','ip_address'], name='Idx_ServerHostname'),
 			models.Index(fields=['status','life'], name='Idx_ServerStatus'),
-		]    
+		] 
+		ordering = ['-id']   
 
 	def __str__(self):
 		return self.server_name

@@ -18,7 +18,7 @@ import time
 class ServerListView(ListView):
     context_object_name = 'servers_list'
     template_name = 'templates/ServerHome.html'   
-    orderering = ['server_name']   
+    # orderering = ['server_name']   
     def get_queryset(self): 
         query = self.request.GET.get('search', default="")
         servers_list = Server.objects.filter( Q(server_name__icontains=query) | Q(ip_address__icontains=query)).order_by('server_name')
