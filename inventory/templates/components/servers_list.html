@@ -1,0 +1,33 @@
+
+<table class="table table-striped table-hover table-bordered table-sm table-light caption-top table-responsive">
+  {% if request.GET.search %}
+    <caption>Search results for <b><i>"{{ request.GET.search }}"</b></i></caption>
+  {% else %}
+    <caption>All Servers list</caption>
+  {% endif %}
+  <tr class="table-primary">
+    {% for field in fields %}
+      <th>{{field | title}}</th>
+    {% endfor %}
+  </tr>     
+  {% for server in servers_list %}   
+    <tr>
+      {% for key,value in server.fields.items %}
+        {% if key != 'slug' %}
+            {% if value %}
+              {% if key == 'server_name' %}            
+                <td><a class="link-primary " role="button" hx-get="{% url 'server-detail-web' server.fields.slug %}" hx-target="#server-main" hx-trigger="click">{{value}}</a></td>      
+              {% else %}
+                <td>{{value}}</td>   
+              {% endif %}         
+            {% else %}
+              <td>-</td>
+            {% endif %}
+        {% endif %}
+      {% endfor %}            
+    </tr>   
+  {% endfor %}
+</table>
+
+
+

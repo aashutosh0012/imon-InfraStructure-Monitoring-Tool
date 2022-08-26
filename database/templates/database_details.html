@@ -1,0 +1,20 @@
+{% extends 'templates/_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <form id="database-details-form" class="form-group my-3 m-1" hx-post="{% url 'database-detail-web' database.slug %}"> {% csrf_token %}
+    <table>
+      <tr class="form-group row">
+        {% for field in form %}
+          <td class="form-control col"> {{ field | as_crispy_field }} </td>
+        {% endfor %}
+      </tr>
+    </table>
+    <div class="container text-center my-2">
+      <input class="btn btn-primary btn-outline btn-sm col" type="submit" href="{% url 'database-detail-web' database.slug %}" name="save" value="Save" hx-target="#database-home">
+      <a class="btn btn-secondary btn-outline  btn-sm col" href="{% url 'database-home' %}">Back</a>
+      <a class="btn btn-danger btn-outline btn-sm col" hx-post="{% url 'database-delete' database.slug %}" hx-target="#database-details-form">Delete</a>
+    </div>
+  </form>
+
+{% endblock %}
