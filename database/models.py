@@ -30,7 +30,8 @@ class Database(models.Model):
 		indexes = [
 			models.Index(fields=['database_name',], name='Idx_databasename'),
 			models.Index(fields=['status'], name='Idx_DatabaseStatus'),
-		]    
+		]  
+		ordering = ['-id']  
 
 	def __str__(self):
 		return self.database_name

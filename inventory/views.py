@@ -17,11 +17,10 @@ import time
 #4 ServerListView
 class ServerListView(ListView):
     context_object_name = 'servers_list'
-    template_name = 'templates/ServerHome.html'   
-    # orderering = ['server_name']   
+    template_name = 'templates/ServerHome.html'    
     def get_queryset(self): 
         query = self.request.GET.get('search', default="")
-        servers_list = Server.objects.filter( Q(server_name__icontains=query) | Q(ip_address__icontains=query)).order_by('server_name')
+        servers_list = Server.objects.filter( Q(server_name__icontains=query) | Q(ip_address__icontains=query)).order_by('-id')
         servers_list = serializers.serialize("python", servers_list)        
         return servers_list
 
@@ -38,7 +37,7 @@ class SearchListView(ListView):
     context_object_name = 'servers_list'
     def get_queryset(self): 
         query = self.request.GET.get('search', default="")
-        servers_list = Server.objects.filter( Q(server_name__icontains=query) | Q(ip_address__icontains=query)).order_by('server_name')
+        servers_list = Server.objects.filter( Q(server_name__icontains=query) | Q(ip_address__icontains=query)).order_by('-id')
         servers_list = serializers.serialize("python", servers_list)        
         return servers_list
 
@@ -136,7 +135,7 @@ class ServerDetailView(UpdateView):
 def reload(request):
     template = 'templates/components/server_home.html'
     query = request.GET.get('search', default="")
-    servers_list = Server.objects.filter( Q(server_name__icontains=query) | Q(ip_address__icontains=query)).order_by('server_name')
+    servers_list = Server.objects.filter( Q(server_name__icontains=query) | Q(ip_address__icontains=query)).order_by('-id')
     servers_list = serializers.serialize("python", servers_list)      
     # context['servers_list'] = servers_list
     context = {'servers_list' : servers_list }

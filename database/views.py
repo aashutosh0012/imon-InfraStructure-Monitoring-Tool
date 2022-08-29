@@ -18,7 +18,7 @@ class DatabaseListView(ListView):
 	template_name = 'templates/database_home.html'
 	def get_queryset(self, *args, **kwargs): 
 		query = self.request.GET.get('search', default="")
-		database_list = Database.objects.filter( Q(database_name__icontains=query) | Q(database_name__icontains=query)).order_by('database_name')
+		database_list = Database.objects.filter( Q(database_name__icontains=query) | Q(database_name__icontains=query)).order_by('-id')
 		database_list = serializers.serialize("python", database_list)   
 		print(database_list)
 		return database_list
@@ -34,7 +34,7 @@ class DatabaseSearchListView(ListView):
 	template_name = 'templates/components/database_list.html'
 	def get_queryset(self, *args, **kwargs): 
 		query = self.request.GET.get('search', default="")
-		database_list = Database.objects.filter( Q(database_name__icontains=query)).order_by('database_name')
+		database_list = Database.objects.filter( Q(database_name__icontains=query)).order_by('-id')
 		database_list = serializers.serialize("python", database_list)   
 		print(database_list)
 		return database_list
@@ -64,7 +64,7 @@ def DatabaseCancelView(request):
 def DatabaseReload(request):
     template = 'templates/components/database_addbutton_list.html'
     query = request.GET.get('search', default="")
-    database_list = Database.objects.filter( Q(database_name__icontains=query)).order_by('database_name')
+    database_list = Database.objects.filter( Q(database_name__icontains=query)).order_by('-id')
     database_list = serializers.serialize("python", database_list)      
     # context['servers_list'] = database_list
     context = {'database_list' : database_list }
