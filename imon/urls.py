@@ -16,9 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import homeView
+from inventory.views import ServerListView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',homeView,name='home'),
+
+    # Deafult for home page 30 Aug 22
+    # path('',homeView,name='home'),
+    
+    # temp servers as home page 30 Aug 22
+    path('', ServerListView.as_view(), name='server'),
+   
     path('servers/',include('inventory.urls'), name='servers'),
     path('databases/',include('database.urls'), name='databases'),
     path('api/', include('api.urls'), name='apihome'),

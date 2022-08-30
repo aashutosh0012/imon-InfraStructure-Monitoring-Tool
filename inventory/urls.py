@@ -1,6 +1,8 @@
 from django.urls import path, include
 from inventory.views import *
 urlpatterns = [
+
+    path('', ServerListView.as_view(), name='home'), #temporary for Servers as homepage 30 Aug 22
     path('', ServerListView.as_view(), name='server'),
     path('search/', SearchListView.as_view(), name='search'),
     path('add/', AddServerView.as_view(),name='add-server'),
