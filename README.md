@@ -30,7 +30,3 @@ This is an single page application (SPA) infrastructure monitoring tool built on
 
 ## Demo Video
 [![Demo Video](https://user-images.githubusercontent.com/21958711/186911200-4f885c65-e478-4f9a-ada5-d14e1d4a282d.JPG)](https://www.youtube.com/watch?v=bfrNy-hks-c)
-
-
-
-test
