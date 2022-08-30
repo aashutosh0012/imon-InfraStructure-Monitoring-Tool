@@ -19,8 +19,15 @@
 
     	<!-- NavBar Start-->
     	<nav class="navbar navbar-expand-lg bg-primary rounded">
-		  <div class="container-fluid ">
-		    <a class="navbar-brand text-light" href="{% url 'home' %}"><h4>iMon - Infrastructure Monitor</h4></a>
+		  <div class="container-fluid">
+				<a class="navbar-brand text-light col-3" href="{% url 'home' %}">
+					<div class="d-flex row">
+						<h3 class="col" >iMon - Infrastructure Monitor</h3>
+				    <small class="col small align-top p-0">beta</small>
+			    </div>
+			  </a>
+
+
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		      <span class="navbar-toggler-icon"></span>
 		    </button>
