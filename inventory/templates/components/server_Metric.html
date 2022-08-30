@@ -1,8 +1,8 @@
 {% load crispy_forms_tags %}
 
+<div class="d-flex flex-column p-0 m-0">
 
  <hr>
-
   <table class="table table-striped table-hover table-bordered table-sm table-light caption-top table-responsive">
       <tr>
       	<th>Updated</th>
@@ -36,8 +36,6 @@
       	<td>{{ serverMetrics.load_average1 }}</td>
       	<td>{{ serverMetrics.load_average2 }}</td>
       	<td>{{ serverMetrics.load_average3 }}</td>
-
-
       </tr>
    </table>
    
@@ -67,8 +65,11 @@
   	</div>
   </div>
 
-<div class="container">
-{{ cpu_usage_fig | safe }}
-{{ cpu_memory_usage_fig | safe }}
-
+<div class="container-sm">
+  <div class="row">
+    {{ cpu_usage_fig | safe }}
+  </div>
+  <div class="row border">
+    {{ cpu_memory_usage_fig | safe }}
+  </div>
 </div>  
