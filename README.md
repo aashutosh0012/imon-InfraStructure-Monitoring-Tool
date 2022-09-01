@@ -2,6 +2,7 @@
 
 This is an single page application (SPA) infrastructure monitoring tool built on Python & Django.
 
+####Try Infrastrucre Monitoring Tool at : https://infra-mon.herokuapp.com/
 
 ### Manage & Monitor Infrastructure  Invetories
 - Servers
