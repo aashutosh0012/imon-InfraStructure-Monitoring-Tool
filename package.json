@@ -1,0 +1,20 @@
+{
+3    "name": "imon-InfraStructure-Monitoring-Tool",
+4    "version": "1.0.0",
+5    "description": "",
+6    "scripts": {
+7        "build": "echo \"No build specified\" && exit 1",
+8        "test": "echo \"No test specified\" && exit 1",
+9        "start": "node index.js"
+10    },
+11    "repository": {
+12        "type": "git",
+13        "url": "git+https://github.com/aashutosh0012/imon-InfraStructure-Monitoring-Tool.git"
+14    },
+15    "author": "",
+16    "license": "ISC",
+17    "bugs": {
+18        "url": "https://github.com/aashutosh0012/imon-InfraStructure-Monitoring-Tool/issues"
+19    },
+20    "homepage": "https://github.com/aashutosh0012/imon-InfraStructure-Monitoring-Tool#readme"
+21}
